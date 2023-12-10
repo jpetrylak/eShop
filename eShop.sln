@@ -1,23 +1,40 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4790C2FF-3B9E-4743-B4C9-0CA44C52C442}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{4790C2FF-3B9E-4743-B4C9-0CA44C52C442}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.WebApi", "src\eShop.WebApi\eShop.WebApi.csproj", "{E7B83F47-4246-4B40-A093-92AC214D3968}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.WebApi", "Source\eShop.WebApi\eShop.WebApi.csproj", "{E7B83F47-4246-4B40-A093-92AC214D3968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Domain", "src\eShop.Domain\eShop.Domain.csproj", "{230B6827-B546-4A34-B548-C258BABF3A26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Domain", "Source\eShop.Domain\eShop.Domain.csproj", "{230B6827-B546-4A34-B548-C258BABF3A26}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1DDF796B-B3AE-4DA5-9CB3-37C75E8118E6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1DDF796B-B3AE-4DA5-9CB3-37C75E8118E6}"
 	ProjectSection(SolutionItems) = preProject
-		test\order_tests.http = test\order_tests.http
+		Tests\orders_api_tests.http = Tests\orders_api_tests.http
+	EndProjectSection
+	eShop.Domain.Tests.csproj
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Domain.Tests", "Tests\eShop.Domain.Tests\eShop.Domain.Tests.csproj", "{A9E836A0-BE7A-499F-80F4-192710D19BBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Application", "Source\eShop.Application\eShop.Application.csproj", "{CE4FF2F1-FFF1-4F50-943C-CE7ED6F39F3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Infrastructure", "Source\eShop.Infrastructure\eShop.Infrastructure.csproj", "{64A3A0DA-032D-4682-9818-1A67E7EF9C51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Shared", "Source\eShop.Shared\eShop.Shared.csproj", "{FEDC94D9-7E86-4D2E-88D3-5C6DC5491777}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{586FC7DC-2DC5-49C9-BA5C-08D2701AFFB1}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		README.md = README.md
+		Dockerfile = Dockerfile
+		.gitignore = .gitignore
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Domain.Tests", "test\eShop.Domain.Tests\eShop.Domain.Tests.csproj", "{A9E836A0-BE7A-499F-80F4-192710D19BBD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Application", "src\eShop.Application\eShop.Application.csproj", "{CE4FF2F1-FFF1-4F50-943C-CE7ED6F39F3A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Infrastructure", "src\eShop.Infrastructure\eShop.Infrastructure.csproj", "{64A3A0DA-032D-4682-9818-1A67E7EF9C51}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Shared", "src\eShop.Shared\eShop.Shared.csproj", "{FEDC94D9-7E86-4D2E-88D3-5C6DC5491777}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6594BA34-F163-4692-8B8C-5082C28A9F4D}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\add_ef_migration.bat = Scripts\add_ef_migration.bat
+		Scripts\docker-compose.yml = Scripts\docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

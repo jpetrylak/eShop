@@ -1,28 +1,31 @@
 ﻿using Convey.CQRS.Commands;
 using eShop.Domain.Orders;
-using eShop.Domain.Products;
 using eShop.Infrastructure.EntityFramework;
 using eShop.Infrastructure.EntityFramework.Extensions;
 using eShop.Shared.CQRS;
+using eShop.Shared.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace eShop.Application.Orders.Commands.Handlers;
 
-public class AddOrderPositionCommandHandler : ICommandHandler<AddOrderPositionCommand>
+public class RemoveOrderPositionCommandHandler : ICommandHandler<RemoveOrderPositionCommand>
 {
     private readonly EShopDbContext _dbContext;
     private readonly IDomainEventsDispatcher _eventsDispatcher;
 
-    public AddOrderPositionCommandHandler(EShopDbContext dbContext, IDomainEventsDispatcher eventsDispatcher)
+    public RemoveOrderPositionCommandHandler(EShopDbContext dbContext, IDomainEventsDispatcher eventsDispatcher)
     {
         _dbContext = dbContext;
         _eventsDispatcher = eventsDispatcher;
     }
 
-    public async Task HandleAsync(AddOrderPositionCommand command, CancellationToken ct)
+    public async Task HandleAsync(RemoveOrderPositionCommand command, CancellationToken ct)
     {
-        Order order = await _dbContext.Orders.GetAsync(command.OrderId);
-        Product product = await _dbContext.Products.GetAsync(command.ProductId);
-        order.AddPosition(product, command.Amount);
+        Order order = await _dbContext.Orders
+            .Include(o => o.Positions)
+            .GetAsync(command.OrderId);
+
+        order.RemovePosition(command.ProductId);
 
         _dbContext.Orders.Update(order);
         await _dbContext.SaveChangesAsync(ct);

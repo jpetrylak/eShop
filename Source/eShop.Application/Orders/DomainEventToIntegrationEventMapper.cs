@@ -3,7 +3,7 @@ using eShop.Domain.Orders.Events;
 using eShop.Shared.CQRS;
 using eShop.Shared.DDD;
 
-namespace eShop.Application;
+namespace eShop.Application.Orders;
 
 public class DomainEventToIntegrationEventMapper : IDomainEventToIntegrationEventMapper
 {
@@ -18,19 +18,14 @@ public class DomainEventToIntegrationEventMapper : IDomainEventToIntegrationEven
                     @event.ShippingAddress);
             case OrderPaidDomainEvent @event:
                 return new OrderPaidIntegrationEvent(
-                    @event.OrderGuid,
+                    @event.OrderId,
                     @event.PaymentDateTime);
             case OrderShippedDomainEvent @event:
                 return new OrderShippedIntegrationEvent(
-                    @event.OrderGuid,
+                    @event.OrderId,
                     @event.ShippingDateTime);
             default:
                 return null;
         }
     }
-
-    public IEnumerable<IIntegrationEvent> Map(IEnumerable<IDomainEvent> events) => events
-        .Select(Map)
-        .Where(e => e != null)
-        .ToArray();
 }

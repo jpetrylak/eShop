@@ -5,7 +5,7 @@ COPY . ./
 
 RUN dotnet restore
 #RUN dotnet publish -c Release -o out
-RUN dotnet publish ./src/eShop.WebApi/eShop.WebApi.csproj -r linux-x64 -c Release -o /App
+RUN dotnet publish ./Source/eShop.WebApi/eShop.WebApi.csproj -r linux-x64 -c Release -o /App
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
