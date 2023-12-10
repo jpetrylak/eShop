@@ -2,11 +2,11 @@
 
 A backend application presenting the use of the Domain Driven Development and CQRS approach on the example of order processing in an online store. The application allows to:
 
-- Create an order (and send e-mail with confirmation to user)
+- Create an order (and send confirmation e-mail to user)
 - Add position to the order
 - Remove position from the order
-- Pay for the order (and send e-mail wi~~~~th confirmation to user)
-- Ship the order (and send an e-mail with confirmation to user)
+- Pay for the order (and send confirmation e-mail to user)
+- Ship the order (and send confirmation e-mail to user)
 
 ## Domain Driven Development
 
@@ -23,7 +23,7 @@ Domain events in the *Events* collection are then processed by [DomainEventsDisp
 
 ### Domain object validation
 
-In case of erroneous incoming data, the domain object throws an exception of type inheriting from [BusinessRuleException](Source/eShop.Shared/DDD/Validation/BusinessRuleException.cs). The exception is then intercepted by a global error handler ([EShopExceptionHandler](Source~~~~/eShop.Shared/WebApi/ErrorHandling/EShopExceptionHandler.cs)) in the web API layer which returns message to the API client.
+In case of erroneous incoming data, the domain object throws an exception of type inheriting from [BusinessRuleException](Source/eShop.Shared/DDD/Validation/BusinessRuleException.cs). The exception is then intercepted by a global error handler ([AppExceptionHandler](Source/eShop.Shared/WebApi/ErrorHandling/AppExceptionHandler.cs)) in the web API layer which returns message to the API client.
 
 ## Solution projects
 
