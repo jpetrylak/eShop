@@ -27,11 +27,11 @@ In case of erroneous incoming data, the domain object throws an exception of typ
 
 ## Solution projects
 
-- <code>[eShop.WebApi](Source/eShop.WebApi)</code> Contains web controllers and application configuration. Controllers receive web requests and invoke commands and queries
-- <code>[eShop.Application](Source/eShop.Application)</code> Contains query, command, integration events handlers which read and write data to the database.
+- <code>[eShop.WebApi](Source/eShop.WebApi)</code> Contains web controllers and application configuration.
+- <code>[eShop.Application](Source/eShop.Application)</code> Contains query, command integration events and handlers.
 - <code>[eShop.Shared](Source/eShop.Shared)</code> Utilities used by other projects. Contains code related to CQRS, DDD, error handling, e-mails sending.
 - <code>[eShop.Domain](Source/eShop.Domain)</code> Contains domain objects with business logic, validation and domain events.
-- <code>[eShop.Infrastructure](Source/eShop.Infrastructure)</code> Contains Entity Framework configuration: DbContext class, migrations and database seeding class.
+- <code>[eShop.Infrastructure](Source/eShop.Infrastructure)</code> Contains Entity Framework related code like DbContext class, migrations and database seeding class.
 
 ## Libraries
 
