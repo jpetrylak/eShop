@@ -12,7 +12,7 @@ using eShop.Infrastructure.EntityFramework;
 namespace eShop.Infrastructure.EntityFramework.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    [Migration("20231204192313_Initial")]
+    [Migration("20231210165605_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
