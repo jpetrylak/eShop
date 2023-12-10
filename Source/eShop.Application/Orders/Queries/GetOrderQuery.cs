@@ -3,4 +3,4 @@ using eShop.Application.Orders.Models;
 
 namespace eShop.Application.Orders.Queries;
 
-public record GetOrderHistoryQuery(long OrderId) : IQuery<IEnumerable<OrderHistoryModel>>;
+public record GetOrderQuery(long OrderId) : IQuery<OrderDetailsModel>;

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eShop.Application.Orders.Models;
+namespace eShop.Controllers.Orders.Models;
 
-public record CreateOrderPositionModel
+public record CreateOrderPositionApiModel
 {
     [Required]
     [Range(1, long.MaxValue)]
