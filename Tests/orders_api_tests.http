@@ -1,0 +1,150 @@
+@host = http://localhost:5098/api
+@product1Id = 1
+@product2Id = 2
+@product1Amount = 2
+@product2Amount = 3
+
+### POST Create order
+POST {{host}}/orders/
+Accept: text/plain
+Content-Type: application/json
+
+{
+  "userEmail": "user1@eshop.com",
+  "shippingAddress": "Polna 1, 33-333 Kraków"
+}
+
+> {%
+    client.test("Create order", () => {
+        client.assert(response.status === 201);
+        const body = response.body;
+        client.assert(body.id > 0)
+        client.assert(body.status === "Created");
+        client.assert(body.userEmail === "user1@eshop.com");
+        client.assert(body.shippingAddress == "Polna 1, 33-333 Kraków");
+    });
+    client.global.set("orderId", response.body.id);
+%}
+
+### POST add order position #1
+POST {{host}}/orders/{{orderId}}/positions
+Accept: text/plain
+Content-Type: application/json
+
+{
+    "productId": {{product1Id}},
+    "amount": {{product1Amount}}
+}
+
+> {%
+    client.test("Add order position #1", () => {
+        client.assert(response.status === 201);
+        const body = response.body;
+        client.assert(body.positions.length === 1);
+        client.assert(body.positions[0].productId > 0);
+        client.assert(body.positions[0].amount > 0);
+    })
+%}
+
+### POST add order position #2
+POST {{host}}/orders/{{orderId}}/positions
+Accept: text/plain
+Content-Type: application/json
+
+{
+    "productId": {{product2Id}},
+    "amount": {{product2Amount}}
+}
+
+> {%
+    client.test("Add order position #2", () => {
+        client.assert(response.status === 201);
+        const body = response.body;
+        client.assert(body.positions.length === 2);
+        client.assert(body.positions[1].productId > 0);
+        client.assert(body.positions[1].amount > 0);
+    })
+%}
+
+### GET order
+GET {{host}}/orders/{{orderId}}
+Accept: application/json
+
+> {%
+    client.test("Return order", () => {
+        const body = response.body;
+        client.assert(body.positions.length == 2);
+        client.assert(body.positions[0].productId > 0);
+        client.assert(body.positions[0].amount > 0);
+        client.assert(body.positions[1].productId > 0);
+        client.assert(body.positions[1].amount > 0);
+    })
+%}
+
+### DELETE delete order position
+DELETE {{host}}/orders/{{orderId}}/positions/{{product2Id}}
+Accept: text/plain
+Content-Type: application/json
+
+> {%
+    client.test("Delete order position", () => {
+        client.assert(response.status === 204);
+    })
+%}
+
+### GET order. Check if position deleted
+GET {{host}}/orders/{{orderId}}
+Accept: application/json
+
+> {%
+    client.test("Return order", () => {
+        const body = response.body;
+        client.assert(body.positions.length == 1);
+    })
+%}
+
+### POST pay the order
+POST {{host}}/orders/{{orderId}}/pay
+Accept: text/plain
+Content-Type: application/json
+
+> {%
+    client.test("Pay the order", () => {
+        client.assert(response.status === 204);
+    })
+%}
+
+### POST ship the order
+POST {{host}}/orders/{{orderId}}/ship
+Accept: text/plain
+Content-Type: application/json
+
+> {%
+    client.test("Ship the order", () => {
+        client.assert(response.status === 204);
+    })
+%}
+
+### GET all orders
+GET {{host}}/orders?page=1&results=5&orderBy=id&sortOrder=asc
+Accept: application/json
+
+> {%
+    client.test("Get all orders", () => {
+        client.assert(response.status === 200);
+        const body = response.body;
+        client.assert(body.items.length > 0)
+    })
+%}
+
+### GET order history
+GET {{host}}/orders/{{orderId}}/history?page=1&results=5&orderBy=occured&sortOrder=asc
+Accept: application/json
+
+> {%
+    client.test("Get order history", () => {
+        client.assert(response.status === 200);
+        const body = response.body;
+        client.assert(body.items.length > 0)
+    })
+%}
