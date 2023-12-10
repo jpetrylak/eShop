@@ -19,7 +19,7 @@ The [Order](Source/eShop.Domain/Orders/Order.cs) class provides methods related 
 Domain events in the *Events* collection are then processed by [DomainEventsDispatcher](Source/eShop.Shared/CQRS/DomainEventsDispatcher.cs) which:
 
 - Calls the domain event handler associated with the event
-- Optionally, if an integration event associated with a domain event is defined (as a decorator in ([ApplicationModuleExtensions](Source/eShop.Application/ApplicationModuleExtensions.cs))), that integration event is sent to the RabbitMQ queue which will then be handled by the integration event handler
+- Optionally, if an integration event associated with a domain event is defined (as a decorator in [ApplicationModuleExtensions](Source/eShop.Application/ApplicationModuleExtensions.cs)), that integration event is sent to the RabbitMQ queue which will then be handled by the integration event handler
 
 ### Domain object validation
 
