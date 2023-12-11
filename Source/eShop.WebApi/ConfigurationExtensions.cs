@@ -6,12 +6,14 @@ using Convey.MessageBrokers.CQRS;
 using Convey.MessageBrokers.RabbitMQ;
 using eShop.Infrastructure.EntityFramework;
 using eShop.Shared.Emailing;
+using eShop.Shared.WebApi;
 using eShop.Shared.WebApi.ErrorHandling;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace eShop;
 
-public static class ServiceCollectionExtensions
+public static class ConfigurationExtensions
 {
     public static IServiceCollection ConfigureConvey(this IServiceCollection services)
     {
@@ -40,8 +42,16 @@ public static class ServiceCollectionExtensions
             .AddDbContext<EShopDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("eShop")))
             .AddHostedService<DatabaseInitializationTask>();
 
-    public static IServiceCollection AddEmailSender(this IServiceCollection services, IConfiguration configuration) =>
+    public static IServiceCollection AddEmailSender(this IServiceCollection services) =>
+        services
+            .AddSingleton<IEmailSender, SmtpEmailSender>();
+
+    public static IServiceCollection ConfigureApplicationSettings(
+        this IServiceCollection services, IConfiguration configuration) =>
         services
             .Configure<SmtpOptions>(configuration.GetSection(SmtpOptions.Smtp))
-            .AddSingleton<IEmailSender, SmtpEmailSender>();
+            .Configure<EshopOptions>(configuration.GetSection(EshopOptions.Eshop));
+
+    public static bool EnableSwagger(this IApplicationBuilder app) =>
+        app.ApplicationServices.GetService<IOptions<EshopOptions>>().Value.EnableSwagger;
 }

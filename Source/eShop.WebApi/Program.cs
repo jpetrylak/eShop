@@ -18,8 +18,9 @@ public class Program
             .ConfigureConvey()
             .AddSwaggerGen()
             .AddEntityFramework(configuration)
-            .AddEmailSender(configuration)
+            .AddEmailSender()
             .AddApplicationEvents()
+            .ConfigureApplicationSettings(configuration)
             .ConfigureOptions<ConfigureCorsOptions>()
             .ConfigureOptions<ConfigureSwaggerGenOptions>()
             .ConfigureOptions<ConfigureSwaggerUIOptions>()
@@ -33,7 +34,7 @@ public class Program
         app.UseConvey();
         app.UseCors(ConfigureCorsOptions.AllowAny);
 
-        if (app.Environment.IsDevelopment())
+        if (app.EnableSwagger())
         {
             app.UseSwagger();
             app.UseSwaggerUI();

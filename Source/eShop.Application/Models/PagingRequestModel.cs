@@ -9,7 +9,7 @@ public record PagingRequestModel(int Page, int Results, string OrderBy, string S
     /// <summary>
     /// Gets or sets the page number.
     /// </summary>
-    /// <example>2</example>
+    /// <example>1</example>
     public int Page { get; init; } = Page;
 
     /// <summary>
