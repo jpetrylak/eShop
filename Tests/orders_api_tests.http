@@ -1,4 +1,4 @@
-@host = http://localhost:5098/api
+@host = http://localhost:5000/api
 @product1Id = 1
 @product2Id = 2
 @product1Amount = 2
