@@ -43,3 +43,16 @@ In case of erroneous incoming data, the domain object throws an exception of typ
 ## Docker
 
 The repository contains a [docker-compose.yml](Scripts/docker-compose.yml) file with all required services (RabbitMQ, MS SQL, MailHog).
+
+## Running application in docker
+
+To run application on local environment using docker:
+1. Run script [generate-cert.bat](Scripts/infrastructure/generate-cert.bat) (Scripts/infrastructure/generate-cert.bat) to generate self-signed certificate. It is required for HTTPS communication.
+2. Run script [build_app.bat](Scripts/build_app.bat) to create application docker image.
+3. Run script [run_app.bat](Scripts/run_app.bat)
+
+## Running application on local environment
+
+1. Install [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) SDK and open `eShop.sln`.
+2. Run or debug eShop.WebApi project using `http` launch configuration
+3. Optionally run script [run_infrastructure.bat](Scripts/infrastructure/run_infrastructure.bat) to create containers with all required services (MS SQL, RabbitMQ, MailHog). Otherwise, the connection data must be set in the `appsettings.Development.json` file.
