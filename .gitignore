@@ -4,6 +4,7 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 .idea/
-/Scripts/backups/*
-/Scripts/data/*
+/Scripts/infrastructure/backups/*
+/Scripts/infrastructure/data/*
+/App/
 .vscode/

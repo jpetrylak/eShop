@@ -1,0 +1,56 @@
+version: '3'
+volumes:
+    rabbitmq_log:
+    rabbitmq_data:
+
+services:
+    eshop-rabbit:
+        container_name: "eshop-rabbit"
+        image: "rabbitmq:3-management"
+        ports:
+            - 5672:5672
+            - 15672:15672
+        healthcheck:
+            test: [ "CMD", "curl", "-f", "http://localhost:15672" ]
+            interval: 30s
+            timeout: 10s
+            retries: 5
+        volumes:
+            - rabbitmq_log:/var/log/rabbitmq
+            - rabbitmq_data:/var/lib/rabbitmq
+        networks:
+            - eshop-default
+
+    eshop-mssql:
+        container_name: "eshop-mssql"
+        image: "mcr.microsoft.com/mssql/server:2017-latest"
+        ports:
+            - "1433:1433"
+        environment:
+            SA_PASSWORD: "zaq1@WSX"
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: "Developer"
+        networks:
+            - eshop-default
+        volumes:
+            - type: bind
+              source: ./backups
+              target: /backups
+            - type: bind
+              source: ./data
+              target: /var/opt/mssql/data
+
+    eshop-mailhog:
+        container_name: "eshop-mailhog"
+        image: "mailhog/mailhog"
+        ports:
+            - "8025:8025"
+            - "1025:1025"
+        networks:
+            - eshop-default
+
+networks:
+    eshop-default:
+        name: eshop_network
+        external: true
+

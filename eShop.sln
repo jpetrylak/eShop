@@ -24,16 +24,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 		README.md = README.md
-		Dockerfile = Dockerfile
 		.gitignore = .gitignore
 		.dockerignore = .dockerignore
 		.editorconfig = .editorconfig
+		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6594BA34-F163-4692-8B8C-5082C28A9F4D}"
 	ProjectSection(SolutionItems) = preProject
 		Scripts\add_ef_migration.bat = Scripts\add_ef_migration.bat
 		Scripts\docker-compose.yml = Scripts\docker-compose.yml
+		Scripts\build_app.bat = Scripts\build_app.bat
+		Scripts\run_app.bat = Scripts\run_app.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C6FEC0E4-FA09-4E35-B890-21281EDF9972}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\infrastructure\docker-compose.yml = Scripts\infrastructure\docker-compose.yml
+		Scripts\infrastructure\run_infrastructure.bat = Scripts\infrastructure\run_infrastructure.bat
 	EndProjectSection
 EndProject
 Global
@@ -74,5 +82,6 @@ Global
 		{CE4FF2F1-FFF1-4F50-943C-CE7ED6F39F3A} = {4790C2FF-3B9E-4743-B4C9-0CA44C52C442}
 		{64A3A0DA-032D-4682-9818-1A67E7EF9C51} = {4790C2FF-3B9E-4743-B4C9-0CA44C52C442}
 		{FEDC94D9-7E86-4D2E-88D3-5C6DC5491777} = {4790C2FF-3B9E-4743-B4C9-0CA44C52C442}
+		{C6FEC0E4-FA09-4E35-B890-21281EDF9972} = {6594BA34-F163-4692-8B8C-5082C28A9F4D}
 	EndGlobalSection
 EndGlobal
