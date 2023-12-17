@@ -9,5 +9,6 @@ riderModule.iml
 /App/
 .vscode/
 .vs/
+.Azure/
 
 *.pfx
