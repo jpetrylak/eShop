@@ -8,5 +8,6 @@ riderModule.iml
 /Scripts/infrastructure/data/*
 /App/
 .vscode/
+.vs/
 
 *.pfx

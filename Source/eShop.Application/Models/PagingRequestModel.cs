@@ -2,21 +2,21 @@
 
 namespace eShop.Application.Models;
 
-public record PagingRequestModel(int Page, int Results, string OrderBy, string SortOrder) : IValidatableObject
+public record PagingRequestModel(int CurrentPage, int ResultsPerPage, string OrderBy, string SortOrder) : IValidatableObject
 {
     private readonly string[] _sortOrderAllowedValues = { "asc", "desc" };
 
     /// <summary>
-    /// Gets or sets the page number.
+    /// Gets or sets the current page number.
     /// </summary>
     /// <example>1</example>
-    public int Page { get; init; } = Page;
+    public int CurrentPage { get; init; } = CurrentPage;
 
     /// <summary>
-    /// Gets or sets the number of items to retrieve from the beginning.
+    /// Gets or sets the number of results to retrieve from the beginning.
     /// </summary>
     /// <example>10</example>
-    public int Results { get; init; } = Results;
+    public int ResultsPerPage { get; init; } = ResultsPerPage;
 
     /// <summary>
     /// Gets or sets the field name to order by.

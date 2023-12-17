@@ -1,4 +1,4 @@
-﻿using Convey.CQRS.Commands;
+using Convey.CQRS.Commands;
 using Convey.CQRS.Queries;
 using eShop.Application.Models;
 using eShop.Application.Orders.Commands;
@@ -34,7 +34,7 @@ public class OrdersController : ControllerBase
     public async Task<IActionResult> GetOrders([FromQuery] PagingRequestModel pagingModel)
     {
         var pagedResult = await _queryDispatcher.QueryAsync(
-            new GetPagedOrdersQuery(pagingModel.OrderBy, pagingModel.Page, pagingModel.Results, pagingModel.SortOrder));
+            new GetPagedOrdersQuery(pagingModel.OrderBy, pagingModel.CurrentPage, pagingModel.ResultsPerPage, pagingModel.SortOrder));
 
         return Ok(pagedResult);
     }
@@ -64,7 +64,7 @@ public class OrdersController : ControllerBase
     {
         var pagedResult = await _queryDispatcher.QueryAsync(
             new GetPagedOrderHistoryQuery(
-                orderId, pagingModel.OrderBy, pagingModel.Page, pagingModel.Results, pagingModel.SortOrder));
+                orderId, pagingModel.OrderBy, pagingModel.CurrentPage, pagingModel.ResultsPerPage, pagingModel.SortOrder));
 
         return Ok(pagedResult);
     }
@@ -103,7 +103,7 @@ public class OrdersController : ControllerBase
     {
         var pagedResult = await _queryDispatcher.QueryAsync(
             new GetPagedOrderPositionsQuery(
-                orderId, pagingModel.OrderBy, pagingModel.Page, pagingModel.Results, pagingModel.SortOrder));
+                orderId, pagingModel.OrderBy, pagingModel.CurrentPage, pagingModel.ResultsPerPage, pagingModel.SortOrder));
 
         return Ok(pagedResult);
     }
