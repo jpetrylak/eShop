@@ -1,4 +1,4 @@
-﻿namespace eShop.Constants;
+﻿namespace eShop.Controllers.Orders;
 
 public static class OrdersControllerRoute
 {

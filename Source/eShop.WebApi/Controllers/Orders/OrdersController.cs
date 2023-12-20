@@ -4,7 +4,6 @@ using eShop.Application.Models;
 using eShop.Application.Orders.Commands;
 using eShop.Application.Orders.Models;
 using eShop.Application.Orders.Queries;
-using eShop.Constants;
 using eShop.Controllers.Orders.Models;
 using Microsoft.AspNetCore.Mvc;
 using ContentType = eShop.Shared.WebApi.ContentType;
