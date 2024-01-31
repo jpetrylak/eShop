@@ -8,7 +8,7 @@ A backend application presenting the use of the Domain Driven Development and CQ
 - Pay for the order (and send confirmation e-mail to user)
 - Ship the order (and send confirmation e-mail to user)
 
-## Domain Driven Development
+## Domain Driven Design
 
 The [Order](Source/eShop.Domain/Orders/Order.cs) class provides methods related to domain operations on an object. Each method:
 
