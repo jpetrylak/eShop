@@ -32,16 +32,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6594BA34-F163-4692-8B8C-5082C28A9F4D}"
 	ProjectSection(SolutionItems) = preProject
-		Scripts\add_ef_migration.bat = Scripts\add_ef_migration.bat
-		Scripts\docker-compose.yml = Scripts\docker-compose.yml
-		Scripts\build_app.bat = Scripts\build_app.bat
-		Scripts\run_app.bat = Scripts\run_app.bat
+		Scripts\Add-Migration.ps1 = Scripts\
+		Scripts\Add-Migration.ps1ripts\docker-compose.yml = Scripts\docker-compose.yml
+		Scripts\Build-App.ps1 = Scripts\Build-App.ps1
+		Scripts\Start-App.ps1 = Scripts\Start-App.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C6FEC0E4-FA09-4E35-B890-21281EDF9972}"
 	ProjectSection(SolutionItems) = preProject
 		Scripts\infrastructure\docker-compose.yml = Scripts\infrastructure\docker-compose.yml
-		Scripts\infrastructure\run_infrastructure.bat = Scripts\infrastructure\run_infrastructure.bat
+		Scripts\infrastructure\Start-LocalEnvironment.ps1 = Scripts\infrastructure\Start-LocalEnvironment.ps1
 	EndProjectSection
 EndProject
 Global
