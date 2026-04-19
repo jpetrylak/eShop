@@ -29,7 +29,7 @@ public static class QueryableExtensions
             resultsPerPage = 10;
         }
 
-        var isEmpty = await collection.AnyAsync() == false;
+        bool isEmpty = !await collection.AnyAsync();
         if (isEmpty)
         {
             return PagedResult<T>.Empty;
@@ -50,17 +50,14 @@ public static class QueryableExtensions
         return PagedResult<T>.Create(data, page, resultsPerPage, totalPages, totalResults);
     }
 
-    public static IQueryable<T> Limit<T>(this IQueryable<T> collection,
-        int page = 1, int resultsPerPage = 10)
+    private static IQueryable<T> Limit<T>(this IQueryable<T> collection, int page = 1, int resultsPerPage = 10)
     {
         if (page <= 0)
-        {
             page = 1;
-        }
+
         if (resultsPerPage <= 0)
-        {
             resultsPerPage = 10;
-        }
+
         var skip = (page - 1) * resultsPerPage;
         var data = collection.Skip(skip)
             .Take(resultsPerPage);
@@ -68,10 +65,10 @@ public static class QueryableExtensions
         return data;
     }
 
-    public static IQueryable<T> OrderByDynamic<T>(this IQueryable<T> query, string orderByMember, string sortOrder)
+    private static IQueryable<T> OrderByDynamic<T>(this IQueryable<T> query, string orderByMember, string sortOrder)
     {
         var queryElementTypeParam = Expression.Parameter(typeof(T));
-        MemberExpression memberAccess = default;
+        MemberExpression memberAccess;
         try
         {
             memberAccess = Expression.PropertyOrField(queryElementTypeParam, orderByMember);
@@ -91,7 +88,7 @@ public static class QueryableExtensions
         var orderBy = Expression.Call(
             typeof(Queryable),
             sortOrder?.ToLowerInvariant() == "asc" ? "OrderBy" : "OrderByDescending",
-            new Type[] { typeof(T), memberAccess.Type },
+            [typeof(T), memberAccess.Type],
             query.Expression,
             Expression.Quote(keySelector));
 
@@ -103,7 +100,7 @@ public static class QueryableExtensions
         var lambdaParam = Expression.Parameter(typeof(TEntity));
         var leftExpression = Expression.PropertyOrField(lambdaParam, "Id");
 
-        Expression<Func<object>> closure = () => id;
+        Expression<Func<TKey>> closure = () => id;
         var rightExpression = Expression.Convert(closure.Body, leftExpression.Type);
 
         var lambdaBody = Expression.Equal(leftExpression, rightExpression);

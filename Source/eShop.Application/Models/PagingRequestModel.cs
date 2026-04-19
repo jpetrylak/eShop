@@ -4,7 +4,7 @@ namespace eShop.Application.Models;
 
 public record PagingRequestModel(int CurrentPage, int ResultsPerPage, string OrderBy, string SortOrder) : IValidatableObject
 {
-    private readonly string[] _sortOrderAllowedValues = { "asc", "desc" };
+    private readonly string[] _sortOrderAllowedValues = ["asc", "desc"];
 
     /// <summary>
     /// Gets or sets the current page number.
@@ -35,7 +35,7 @@ public record PagingRequestModel(int CurrentPage, int ResultsPerPage, string Ord
         if (SortOrder is not null && !_sortOrderAllowedValues.Contains(SortOrder, StringComparer.InvariantCultureIgnoreCase))
         {
             yield return new ValidationResult(
-                $"Allowed values: {string.Join(", ", _sortOrderAllowedValues)}.", new[] { nameof(SortOrder) });
+                $"Allowed values: {string.Join(", ", _sortOrderAllowedValues)}.", [nameof(SortOrder)]);
         }
     }
 }
