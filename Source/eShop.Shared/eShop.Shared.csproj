@@ -7,13 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Convey.CQRS.Commands" Version="1.1.448" />
-      <PackageReference Include="Convey.CQRS.Events" Version="1.1.448" />
-      <PackageReference Include="Convey.CQRS.Queries" Version="1.1.448" />
-      <PackageReference Include="Convey.MessageBrokers" Version="1.1.448" />
-      <PackageReference Include="Convey.MessageBrokers.CQRS" Version="1.1.448" />
-      <PackageReference Include="Convey.MessageBrokers.RabbitMQ" Version="1.1.448" />
-      <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.6" />
+      <PackageReference Include="Convey.CQRS.Commands" />
+      <PackageReference Include="Convey.CQRS.Events" />
+      <PackageReference Include="Convey.CQRS.Queries" />
+      <PackageReference Include="Convey.MessageBrokers" />
+      <PackageReference Include="Convey.MessageBrokers.CQRS" />
+      <PackageReference Include="Convey.MessageBrokers.RabbitMQ" />
+      <PackageReference Include="Microsoft.Extensions.Options" />
     </ItemGroup>
 
 </Project>

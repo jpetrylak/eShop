@@ -1,0 +1,53 @@
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Convey packages -->
+    <PackageVersion Include="Convey.CQRS.Commands" Version="1.1.448" />
+    <PackageVersion Include="Convey.CQRS.Events" Version="1.1.448" />
+    <PackageVersion Include="Convey.CQRS.Queries" Version="1.1.448" />
+    <PackageVersion Include="Convey.MessageBrokers" Version="1.1.448" />
+    <PackageVersion Include="Convey.MessageBrokers.CQRS" Version="1.1.448" />
+    <PackageVersion Include="Convey.MessageBrokers.RabbitMQ" Version="1.1.448" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Microsoft EF Core -->
+    <PackageVersion Include="EntityFramework" Version="6.5.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="10.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.6" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="10.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Swagger / OpenAPI -->
+    <PackageVersion Include="Boxed.AspNetCore.Swagger" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.6" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.1.7" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.1.7" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Testing & Coverage -->
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
+    <PackageVersion Include="coverlet.collector" Version="10.0.0" />
+    <PackageVersion Include="FluentAssertions" Version="8.9.0" />
+    <PackageVersion Include="FluentAssertions.Extensions" Version="1.0.18" />
+    <PackageVersion Include="Shouldly" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Misc -->
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+</Project>

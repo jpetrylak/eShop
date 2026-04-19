@@ -11,21 +11,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Boxed.AspNetCore.Swagger" Version="10.0.0" />
-        <PackageReference Include="Convey.CQRS.Commands" Version="1.1.448" />
-        <PackageReference Include="Convey.CQRS.Queries" Version="1.1.448" />
-        <PackageReference Include="Convey.MessageBrokers.CQRS" Version="1.1.448" />
-        <PackageReference Include="Convey.MessageBrokers.RabbitMQ" Version="1.1.448" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.6" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.6" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.6">
+        <PackageReference Include="Boxed.AspNetCore.Swagger" />
+        <PackageReference Include="Convey.CQRS.Commands" />
+        <PackageReference Include="Convey.CQRS.Queries" />
+        <PackageReference Include="Convey.MessageBrokers.CQRS" />
+        <PackageReference Include="Convey.MessageBrokers.RabbitMQ" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.6" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.1.7" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.1.7" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
     </ItemGroup>
 
     <ItemGroup>
