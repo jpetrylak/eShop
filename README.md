@@ -53,6 +53,6 @@ To run application on local environment using docker:
 
 ## Running application on local environment
 
-1. Install [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) SDK and open `eShop.sln`.
+1. Install [.NET 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) SDK and open `eShop.sln`.
 2. Run or debug eShop.WebApi project using `http` launch configuration
 3. Optionally run script [Start-LocalEnvironment.ps1](Scripts/infrastructure/Start-LocalEnvironment.ps1) to create containers with all required services (MS SQL, RabbitMQ, MailHog). Otherwise, the connection data must be set in the `appsettings.Development.json` file.
