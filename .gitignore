@@ -12,3 +12,44 @@ riderModule.iml
 .Azure/
 
 *.pfx
+
+# .NET / Visual Studio / Rider / VSCode
+# Build outputs
+**/bin/
+**/obj/
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+# NuGet packages
+*.nupkg
+packages/
+artifacts/
+# Publish outputs
+publish/
+# ReSharper
+_ReSharper*/
+# Coverage and test results
+coverage/
+*.coverage
+*.coveragexml
+# Local DB
+*.mdf
+# Logs
+*.log
+
+# Docker
+# Local docker-compose overrides and env files
+docker-compose.override.yml
+docker-compose.*.yml
+.env
+*.env
+# Docker image tarballs
+*.tar
+# Docker Desktop config
+.docker/
+
+AGENTS.md
+.github/copilot-instructions.md
