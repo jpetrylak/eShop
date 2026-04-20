@@ -3,15 +3,22 @@ using Microsoft.Extensions.Options;
 
 namespace eShop.Configuration;
 
-public class ConfigureCorsOptions : IConfigureOptions<CorsOptions>
+public class ConfigureCorsOptions(
+    IConfiguration configuration) : IConfigureOptions<CorsOptions>
 {
-    public const string AllowAny = "AllowAny";
-    
-    public void Configure(CorsOptions options) =>
+    public const string Default = "Default";
+
+    public void Configure(CorsOptions options)
+    {
+        string[] allowedOrigins = configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
+
         options.AddPolicy(
-            AllowAny,
-            x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            Default,
+            policy =>
+                policy
+                    .WithOrigins(allowedOrigins)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+        );
+    }
 }

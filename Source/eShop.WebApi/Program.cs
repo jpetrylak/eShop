@@ -32,7 +32,7 @@ public class Program
 
         app.UseExceptionHandler();
         app.UseConvey();
-        app.UseCors(ConfigureCorsOptions.AllowAny);
+        app.UseCors(ConfigureCorsOptions.Default);
 
         if (app.EnableSwagger())
         {
