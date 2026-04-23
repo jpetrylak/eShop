@@ -7,6 +7,9 @@ indent_size = 4
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[appsettings*.json]
+indent_size = 2
+
 # CS1591: Missing XML comment for publicly visible type or member.
 # Justification: We only need comments for members that will be exposed publicly in Swagger.
 dotnet_diagnostic.CS1591.severity = none
