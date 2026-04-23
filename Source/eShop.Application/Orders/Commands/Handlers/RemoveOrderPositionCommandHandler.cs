@@ -3,7 +3,6 @@ using eShop.Domain.Orders;
 using eShop.Infrastructure.EntityFramework;
 using eShop.Infrastructure.EntityFramework.Extensions;
 using eShop.Shared.CQRS;
-using eShop.Shared.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace eShop.Application.Orders.Commands.Handlers;
