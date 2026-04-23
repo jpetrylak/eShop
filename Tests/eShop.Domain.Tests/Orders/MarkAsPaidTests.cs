@@ -3,7 +3,6 @@ using eShop.Domain.Orders.Rules;
 using eShop.Domain.Products;
 using eShop.Domain.Tests.Builders;
 using eShop.Shared.DDD.Validation;
-using FluentAssertions.Extensions;
 using Shouldly;
 
 namespace eShop.Domain.Tests.Orders;

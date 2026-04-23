@@ -1,6 +1,5 @@
 ﻿using eShop.Domain.Orders;
 using eShop.Domain.Products;
-using FluentAssertions.Extensions;
 
 namespace eShop.Domain.Tests.Builders;
 
