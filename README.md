@@ -1,58 +1,59 @@
 # eShop
 
-A backend application presenting the use of the Domain Driven Development and CQRS approach on the example of order processing in an online store. The application allows to:
+A backend application that demonstrates Domain-Driven Design and CQRS using order processing in an online store. The application allows you to:
 
-- Create an order (and send confirmation e-mail to user)
-- Add position to the order
-- Remove position from the order
-- Pay for the order (and send confirmation e-mail to user)
-- Ship the order (and send confirmation e-mail to user)
+- Create an order and send a confirmation e-mail to the user
+- Add a position to the order
+- Remove a position from the order
+- Pay for the order and send a confirmation e-mail to the user
+- Ship the order and send a confirmation e-mail to the user
 
-## Domain Driven Design
+## Domain-Driven Design
 
-The [Order](Source/eShop.Domain/Orders/Order.cs) class provides methods related to domain operations on an object. Each method:
+The [Order](Source/eShop.Domain/Orders/Order.cs) class exposes methods for domain operations. Each method:
 
-- Validates incoming data and ensures the correctness of own state
-- Updates appropriate fields
-- Adds a domain event to the *Events* collection
+- Validates incoming data and ensures the object remains in a valid state
+- Updates the appropriate fields
+- Adds a domain event to the `Events` collection
 
-Domain events in the *Events* collection are then processed by [DomainEventsDispatcher](Source/eShop.Shared/CQRS/DomainEventsDispatcher.cs) which:
+Domain events collected in `Events` are then processed by [DomainEventsDispatcher](Source/eShop.Shared/CQRS/DomainEventsDispatcher.cs), which:
 
-- Calls the domain event handler associated with the event
-- Optionally, if an integration event associated with a domain event is defined (as a decorator in [ApplicationModuleExtensions](Source/eShop.Application/ApplicationModuleExtensions.cs)), that integration event is sent to the RabbitMQ queue which will then be handled by the integration event handler
+- Invokes the domain event handler associated with the event
+- Optionally publishes an integration event to RabbitMQ when one is associated with the domain event through a decorator in [ApplicationModuleExtensions](Source/eShop.Application/ApplicationModuleExtensions.cs); that integration event is then handled by the integration event handler
 
 ### Domain object validation
 
-In case of erroneous incoming data, the domain object throws an exception of type inheriting from [BusinessRuleException](Source/eShop.Shared/DDD/Validation/BusinessRuleException.cs). The exception is then intercepted by a global error handler ([AppExceptionHandler](Source/eShop.Shared/WebApi/ErrorHandling/AppExceptionHandler.cs)) in the web API layer which returns message to the API client.
+When incoming data is invalid, the domain object throws an exception derived from [BusinessRuleException](Source/eShop.Shared/DDD/Validation/BusinessRuleException.cs). The exception is intercepted by a global error handler, [AppExceptionHandler](Source/eShop.Shared/WebApi/ErrorHandling/AppExceptionHandler.cs), in the web API layer, which returns the message to the API client.
 
 ## Solution projects
 
-- <code>[eShop.WebApi](Source/eShop.WebApi)</code> Contains web controllers and application configuration.
-- <code>[eShop.Application](Source/eShop.Application)</code> Contains query, command integration events and handlers.
-- <code>[eShop.Shared](Source/eShop.Shared)</code> Utilities used by other projects. Contains code related to CQRS, DDD, error handling, e-mails sending.
-- <code>[eShop.Domain](Source/eShop.Domain)</code> Contains domain objects with business logic, validation and domain events.
-- <code>[eShop.Infrastructure](Source/eShop.Infrastructure)</code> Contains Entity Framework related code like DbContext class, migrations and database seeding class.
+- [`eShop.WebApi`](Source/eShop.WebApi) contains web controllers and application configuration.
+- [`eShop.Application`](Source/eShop.Application) contains queries, commands, integration events, and handlers.
+- [`eShop.Shared`](Source/eShop.Shared) contains utilities shared across projects, including code related to CQRS, DDD, error handling, and e-mail sending.
+- [`eShop.Domain`](Source/eShop.Domain) contains domain objects with business logic, validation, and domain events.
+- [`eShop.Infrastructure`](Source/eShop.Infrastructure) contains Entity Framework code such as the `DbContext`, migrations, and database seeding.
 
 ## Libraries
 
 - [Convey](https://github.com/snatch-dev/Convey) for CQRS and RabbitMQ messaging
-- MS SQL and Entity Frameowrk for data persistence
+- MS SQL and Entity Framework for data persistence
 - [MailHog](https://github.com/mailhog/MailHog) for sending e-mails in the development environment
 - xUnit and [Shouldly](https://github.com/shouldly/shouldly) for unit testing
 
 ## Docker
 
-The repository contains a [docker-compose.yml](Scripts/docker-compose.yml) file with all required services (RabbitMQ, MS SQL, MailHog).
+The repository contains a [docker-compose.yml](Scripts/docker-compose.yml) file with all required services: RabbitMQ, MS SQL, and MailHog.
 
-## Running application in docker~~~~
+## Running the application in Docker
 
-To run application on local environment using docker:
-1. Run script [Generate-Certificate.ps1](Scripts/infrastructure/Generate-Certificate.ps1) (Scripts/infrastructure/Generate-Certificate.ps1) to generate self-signed certificate. It is required for HTTPS communication.
-2. Run script [Build-App.ps1](Scripts/Build-App.ps1) to create application docker image.
-3. Run script [Start-App.ps1](Scripts/Start-App.ps1)
+To run the application locally using Docker:
 
-## Running application on local environment
+1. Run [Generate-Certificate.ps1](Scripts/infrastructure/Generate-Certificate.ps1) to generate a self-signed certificate required for HTTPS communication.
+2. Run [Build-App.ps1](Scripts/Build-App.ps1) to build the application Docker image.
+3. Run [Start-App.ps1](Scripts/Start-App.ps1).
 
-1. Install [.NET 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) SDK and open `eShop.sln`.
-2. Run or debug eShop.WebApi project using `http` launch configuration
-3. Optionally run script [Start-LocalEnvironment.ps1](Scripts/infrastructure/Start-LocalEnvironment.ps1) to create containers with all required services (MS SQL, RabbitMQ, MailHog). Otherwise, the connection data must be set in the `appsettings.Development.json` file.
+## Running the application locally
+
+1. Install the [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) and open `eShop.sln`.
+2. Run or debug the `eShop.WebApi` project using the `http` launch configuration.
+3. Optionally run [Start-LocalEnvironment.ps1](Scripts/infrastructure/Start-LocalEnvironment.ps1) to start containers for all required services: MS SQL, RabbitMQ, and MailHog. Otherwise, set the connection details in `appsettings.Development.json`.
