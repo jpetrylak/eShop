@@ -87,6 +87,7 @@ public class FxRatesProviderWorker : BackgroundService
         }
         catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
         {
+            _logger.LogDebug("Fx rates provider worker is stopping.");
         }
         finally
         {

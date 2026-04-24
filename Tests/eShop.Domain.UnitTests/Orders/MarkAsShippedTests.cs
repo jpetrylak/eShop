@@ -1,10 +1,10 @@
 ﻿using eShop.Domain.Orders;
 using eShop.Domain.Orders.Rules;
-using eShop.Domain.Tests.Builders;
+using eShop.Domain.UnitTests.Builders;
 using eShop.Shared.DDD.Validation;
 using Shouldly;
 
-namespace eShop.Domain.Tests.Orders;
+namespace eShop.Domain.UnitTests.Orders;
 
 public class MarkAsShippedTests
 {

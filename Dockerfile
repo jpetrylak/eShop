@@ -6,18 +6,20 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-COPY ["Source/eShop.Application/", "eShop.Application/"]
-COPY ["Source/eShop.Domain/", "eShop.Domain/"]
-COPY ["Source/eShop.Infrastructure/", "eShop.Infrastructure/"]
-COPY ["Source/eShop.Shared/", "eShop.Shared/"]
-COPY ["Source/eShop.WebApi/", "eShop.WebApi/"]
+COPY ["Directory.Packages.props", "."]
+COPY ["nuget.config", "."]
+COPY ["src/eShop.Application/", "src/eShop.Application/"]
+COPY ["src/eShop.Domain/", "src/eShop.Domain/"]
+COPY ["src/eShop.Infrastructure/", "src/eShop.Infrastructure/"]
+COPY ["src/eShop.WebApi/", "src/eShop.WebApi/"]
+COPY ["src/BuildingBlocks/eShop.Shared/", "src/BuildingBlocks/eShop.Shared/"]
 
-RUN dotnet restore "eShop.WebApi/eShop.WebApi.csproj"
+RUN dotnet restore "src/eShop.WebApi/eShop.WebApi.csproj"
 COPY . .
-RUN dotnet build "eShop.WebApi/eShop.WebApi.csproj" -c Release -o /app/build
+RUN dotnet build "src/eShop.WebApi/eShop.WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "eShop.WebApi/eShop.WebApi.csproj" -c Release -o /app/publish
+RUN dotnet publish "src/eShop.WebApi/eShop.WebApi.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

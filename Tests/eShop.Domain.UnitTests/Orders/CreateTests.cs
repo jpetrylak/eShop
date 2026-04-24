@@ -3,7 +3,7 @@ using eShop.Domain.Orders.Rules;
 using eShop.Shared.DDD.Validation;
 using Shouldly;
 
-namespace eShop.Domain.Tests.Orders;
+namespace eShop.Domain.UnitTests.Orders;
 
 public class CreateTests
 {

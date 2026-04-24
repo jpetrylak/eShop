@@ -10,28 +10,31 @@ A backend application that demonstrates Domain-Driven Design and CQRS using orde
 
 ## Domain-Driven Design
 
-The [Order](Source/eShop.Domain/Orders/Order.cs) class exposes methods for domain operations. Each method:
+The [Order](src/eShop.Domain/Orders/Order.cs) class exposes methods for domain operations. Each method:
 
 - Validates incoming data and ensures the object remains in a valid state
 - Updates the appropriate fields
 - Adds a domain event to the `Events` collection
 
-Domain events collected in `Events` are then processed by [DomainEventsDispatcher](Source/eShop.Shared/CQRS/DomainEventsDispatcher.cs), which:
+Domain events collected in `Events` are then processed by [DomainEventsDispatcher](src/BuildingBlocks/eShop.Shared/CQRS/DomainEventsDispatcher.cs), which:
 
 - Invokes the domain event handler associated with the event
-- Optionally publishes an integration event to RabbitMQ when one is associated with the domain event through a decorator in [ApplicationModuleExtensions](Source/eShop.Application/ApplicationModuleExtensions.cs); that integration event is then handled by the integration event handler
+- Optionally publishes an integration event to RabbitMQ when one is associated with the domain event through a decorator in [ApplicationModuleExtensions](src/eShop.Application/ApplicationModuleExtensions.cs); that integration event is then handled by the integration event handler
 
 ### Domain object validation
 
-When incoming data is invalid, the domain object throws an exception derived from [BusinessRuleException](Source/eShop.Shared/DDD/Validation/BusinessRuleException.cs). The exception is intercepted by a global error handler, [AppExceptionHandler](Source/eShop.Shared/WebApi/ErrorHandling/AppExceptionHandler.cs), in the web API layer, which returns the message to the API client.
+When incoming data is invalid, the domain object throws an exception derived from [BusinessRuleException](src/BuildingBlocks/eShop.Shared/DDD/Validation/BusinessRuleException.cs). The exception is intercepted by a global error handler, [AppExceptionHandler](src/BuildingBlocks/eShop.Shared/WebApi/ErrorHandling/AppExceptionHandler.cs), in the web API layer, which returns the message to the API client.
 
 ## Solution projects
 
-- [`eShop.WebApi`](Source/eShop.WebApi) contains web controllers and application configuration.
-- [`eShop.Application`](Source/eShop.Application) contains queries, commands, integration events, and handlers.
-- [`eShop.Shared`](Source/eShop.Shared) contains utilities shared across projects, including code related to CQRS, DDD, error handling, and e-mail sending.
-- [`eShop.Domain`](Source/eShop.Domain) contains domain objects with business logic, validation, and domain events.
-- [`eShop.Infrastructure`](Source/eShop.Infrastructure) contains Entity Framework code such as the `DbContext`, migrations, and database seeding.
+- [`eShop.WebApi`](src/eShop.WebApi) contains web controllers and application configuration.
+- [`eShop.Application`](src/eShop.Application) contains queries, commands, integration events, and handlers.
+- [`eShop.Domain`](src/eShop.Domain) contains domain objects with business logic, validation, and domain events.
+- [`eShop.Infrastructure`](src/eShop.Infrastructure) contains Entity Framework code such as the `DbContext`, migrations, and database seeding.
+- [`eShop.Shared`](src/BuildingBlocks/eShop.Shared) contains reusable building-block utilities, including code related to CQRS, DDD, error handling, and e-mail sending.
+- [`FxRatesProvider`](src/FxRatesProvider) contains the foreign exchange rates worker module.
+
+Test projects live in the root [`Tests`](Tests) folder. For example, domain unit tests are in [`Tests/eShop.Domain.UnitTests`](Tests/eShop.Domain.UnitTests), and FxRatesProvider integration tests are in [`Tests/FxRatesProvider.IntegrationTests`](Tests/FxRatesProvider.IntegrationTests).
 
 ## Libraries
 

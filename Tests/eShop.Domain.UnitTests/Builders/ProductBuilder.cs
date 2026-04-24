@@ -1,6 +1,6 @@
 ﻿using eShop.Domain.Products;
 
-namespace eShop.Domain.Tests.Builders;
+namespace eShop.Domain.UnitTests.Builders;
 
 public class ProductBuilder
 {
