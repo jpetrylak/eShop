@@ -34,7 +34,7 @@ When incoming data is invalid, the domain object throws an exception derived fro
 - [`eShop.Shared`](src/BuildingBlocks/eShop.Shared) contains reusable building-block utilities, including code related to CQRS, DDD, error handling, and e-mail sending.
 - [`FxRatesProvider`](src/FxRatesProvider) contains the foreign exchange rates worker module.
 
-Test projects live in the root [`Tests`](Tests) folder. For example, domain unit tests are in [`Tests/eShop.Domain.UnitTests`](Tests/eShop.Domain.UnitTests), and FxRatesProvider integration tests are in [`Tests/FxRatesProvider.IntegrationTests`](Tests/FxRatesProvider.IntegrationTests).
+Test projects live in the root [`tests`](tests) folder. For example, domain unit tests are in [`tests/eShop.Domain.UnitTests`](tests/eShop.Domain.UnitTests), and FxRatesProvider integration tests are in [`tests/FxRatesProvider.IntegrationTests`](tests/FxRatesProvider.IntegrationTests).
 
 ## Libraries
 

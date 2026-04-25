@@ -9,20 +9,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Application", "src\eS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Infrastructure", "src\eShop.Infrastructure\eShop.Infrastructure.csproj", "{64A3A0DA-032D-4682-9818-1A67E7EF9C51}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{48995A7F-6960-4537-900D-281E4EE1EC99}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Shared", "src\BuildingBlocks\eShop.Shared\eShop.Shared.csproj", "{FEDC94D9-7E86-4D2E-88D3-5C6DC5491777}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Shared", "src\eShop.Shared\eShop.Shared.csproj", "{FEDC94D9-7E86-4D2E-88D3-5C6DC5491777}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxRatesProvider", "src\FxRatesProvider\FxRatesProvider.csproj", "{B54D5ACD-6A33-4AC7-82B2-DF93166C9429}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1DDF796B-B3AE-4DA5-9CB3-37C75E8118E6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1DDF796B-B3AE-4DA5-9CB3-37C75E8118E6}"
 	ProjectSection(SolutionItems) = preProject
-		Tests\orders_api_tests.http = Tests\orders_api_tests.http
+		tests\orders_api_tests.http = tests\orders_api_tests.http
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Domain.UnitTests", "Tests\eShop.Domain.UnitTests\eShop.Domain.UnitTests.csproj", "{A9E836A0-BE7A-499F-80F4-192710D19BBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Domain.UnitTests", "tests\eShop.Domain.UnitTests\eShop.Domain.UnitTests.csproj", "{A9E836A0-BE7A-499F-80F4-192710D19BBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxRatesProvider.IntegrationTests", "Tests\FxRatesProvider.IntegrationTests\FxRatesProvider.IntegrationTests.csproj", "{88C95F7F-5B22-4D06-BB5F-6FD535DC4C8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxRatesProvider.IntegrationTests", "tests\FxRatesProvider.IntegrationTests\FxRatesProvider.IntegrationTests.csproj", "{88C95F7F-5B22-4D06-BB5F-6FD535DC4C8D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{586FC7DC-2DC5-49C9-BA5C-08D2701AFFB1}"
 	ProjectSection(SolutionItems) = preProject
@@ -80,8 +78,7 @@ Global
 		{230B6827-B546-4A34-B548-C258BABF3A26} = {4790C2FF-3B9E-4743-B4C9-0CA44C52C442}
 		{CE4FF2F1-FFF1-4F50-943C-CE7ED6F39F3A} = {4790C2FF-3B9E-4743-B4C9-0CA44C52C442}
 		{64A3A0DA-032D-4682-9818-1A67E7EF9C51} = {4790C2FF-3B9E-4743-B4C9-0CA44C52C442}
-		{48995A7F-6960-4537-900D-281E4EE1EC99} = {4790C2FF-3B9E-4743-B4C9-0CA44C52C442}
-		{FEDC94D9-7E86-4D2E-88D3-5C6DC5491777} = {48995A7F-6960-4537-900D-281E4EE1EC99}
+		{FEDC94D9-7E86-4D2E-88D3-5C6DC5491777} = {4790C2FF-3B9E-4743-B4C9-0CA44C52C442}
 		{B54D5ACD-6A33-4AC7-82B2-DF93166C9429} = {4790C2FF-3B9E-4743-B4C9-0CA44C52C442}
 		{A9E836A0-BE7A-499F-80F4-192710D19BBD} = {1DDF796B-B3AE-4DA5-9CB3-37C75E8118E6}
 		{88C95F7F-5B22-4D06-BB5F-6FD535DC4C8D} = {1DDF796B-B3AE-4DA5-9CB3-37C75E8118E6}
